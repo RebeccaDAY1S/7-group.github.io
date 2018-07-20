@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="world.js"></script>
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="title">7 DAYS</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="generic.html" class="active">内容</a></li>
+                <li><a href="elements.html">总结</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <h1 class="major">国家分析</h1>
+
+                <span class="image fit"> <!-- Prepare the DOM element to be held by eCharts -->
+                    <div id="mychart" style="width: 1200px;height:900px;"></div>
+    
+                    <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('mychart'));
+    
+                        option = {
+                            title: {
+                                
+                                text: '豆瓣top250国家分布图',
+                                textStyle: {
+                                color: '#FFE4E1',
+                            },
+                               
+                                left: 'center'
+                            },
+                            tooltip: {
+                                // trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                                data: ['区域数据',]
+                            },
+                            geo: {
+                                "zoom": 1,
+                                "center": [
+                                    50.31,
+                                    30.52
+                                ],
+                            },
+                            visualMap: {
+                                min: 1,
+                                max: 70,
+                                left: 'left',
+                                top: 'bottom',
+                                text: ['高', '低'],
+                                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                left: 'left',
+                                calculable: true
+                            },
+                            series: [{
+                                name: '区域数据',
+                                type: 'map',
+                                map: 'world',
+                                roam: false,
+                                label: {
+                                    normal: {
+                                        // Modify to "true" to show the data
+                                        show: false
+                                    },
+                                    emphasis: {
+                                        show: false
+                                    }
+                                },
+                                data: [{
+                                    name: 'China',
+                                    value: 36
+                                }, {
+                                    name: 'United States',
+                                    value: 124
+                                }, {
+                                    name: 'Japan',
+                                    value: 28
+                                }, {
+                                    name: 'England',
+                                    value: 15
+                                }, {
+                                    name: 'France',
+                                    value: 14
+                                }, {
+                                    name: 'Korea',
+                                    value: 10
+                                }, {
+                                    name: 'Italy',
+                                    value: 6
+                                }, {
+                                    name: 'Germany',
+                                    value: 4
+                                }]
+                            }]
+                        };
+                        myChart.setOption(option);
+                    </script>
+                    <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mychart1" style="width: 100%;height:500%;"></div>
+
+    <script type="text/javascript">
+        var myChart1 = echarts.init(document.getElementById('mychart1'));
+
+        option = {
+            title: {
+                text: 'IMDBtop250电影国家分布',
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+               
+                left: 'center'
+            },
+            tooltip: {
+                // trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                left: 'left',
+                data: ['区域数据', ]
+            },
+            visualMap: {
+                min: 1,
+                max: 40,
+                left: 'left',
+                top: 'bottom',
+                text: ['高', '低'],
+                textStyle:{
+                                    color:'#FFE4E1',
+                                },
+                left: 'left',
+                calculable: true
+            },
+            series: [{
+                name: '区域数据',
+                type: 'map',
+                map: 'world',
+                roam: false,
+                label: {
+                    normal: {
+                        // Modify to "true" to show the data
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                data: [{
+                    name: 'India',
+                    value: 14
+                }, {
+                    name: 'United States',
+                    value: 166
+                }, {
+                    name: 'Russia',
+                    value: 3
+                }, {
+                    name: 'England',
+                    value: 14
+                }, {
+                    name: 'France',
+                    value: 9
+                }, {
+                    name: 'Sweden',
+                    value: 3
+                }, {
+                    name: 'Italy',
+                    value: 10
+                }, {
+                    name: 'Germany',
+                    value: 6
+                }]
+            }]
+        };
+        myChart1.setOption(option);
+    </script></span>
+                <p>两个榜单都以美国的电影为主，可见北美电影对世界的影响力之大。而豆瓣的亚洲电影数量明显多于IMDB的电影数量，这既与文化环境有关，也和不同国家对于外来语言电影的接受度有关。一方面，由于亚洲部分国家对于互联网的限制，IMDB的互联网用户基本以欧美用户为主，它直接导致了亚洲电影在IMDB的备选影单中处于劣势，上榜率几乎为零。而且，IMDB对亚洲电影的选择也有些出人意料的地方，比如说，在中国并不被看好的《叶问》却在IMDB榜上，其实，这也反映了欧美观众对中国电影的另一种审美角度和思路。另一方面，欧美观众相对于中国观众更愿意接受自身语系的电影，与之形成鲜明对比的是中国观众常常对国产电影不买账。但这也与中国的电影市场有关，当市场需求过大时，中国电影票房虽然一路走高，但质量却参差不齐，难以令人信服。</p>
+                <p>此外，有个有趣的现象，印度电影在IMDB榜单中仅次于英美，仿佛象征着亚洲电影的异军突起。这很大原因在于IMDB的用户中，印度影迷大约占据6.3%，而这一批影迷常常会为印度电影刷分，为了维持IMDB榜单的客观性和公信力，IMDB官方甚至为印度专门平行推出了另一榜单：印度电影IMDB top 250。</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li>&copy; Untitled. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
